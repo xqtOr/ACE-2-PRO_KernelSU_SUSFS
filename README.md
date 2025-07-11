@@ -1,4 +1,4 @@
-# Kernels for Android based on wild kernels
+# Kernel for OnePlus Ace 2 Pro based on wild kernels
 
 ## Your warranty is no longer valid!
 
@@ -12,11 +12,11 @@ By flashing this kernel, **YOU** are choosing to make these modifications. If so
 
 # Other Links:
 
-[Horizon Kernel Flasher](https://github.com/libxzr/HorizonKernelFlasher)  
-[Modified Kernel Flasher](https://github.com/fatalcoder524/KernelFlasher)
-[KSUN Manager](https://github.com/KernelSU-Next/KernelSU-Next)
-[SUSFS Module](https://github.com/sidex15/ksu_module_susfs)
-[Mountify Module](https://github.com/backslashxx/mountify)
+- [Horizon Kernel Flasher](https://github.com/libxzr/HorizonKernelFlasher)
+- [Modified Kernel Flasher](https://github.com/fatalcoder524/KernelFlasher)
+- [KSUN Manager](https://github.com/KernelSU-Next/KernelSU-Next)
+- [SUSFS Module](https://github.com/sidex15/ksu_module_susfs)
+- [Mountify Module](https://github.com/backslashxx/mountify)
 
 ---
 
