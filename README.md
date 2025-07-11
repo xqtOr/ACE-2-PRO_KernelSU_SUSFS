@@ -1,3 +1,5 @@
+**English 🇺🇸​​** | [Russian 🇷🇺](README_RU.md)
+
 # Kernel for OnePlus Ace 2 Pro based on wild kernels
 
 ## Your warranty is no longer valid!
