@@ -126,10 +126,7 @@ jobs:
           echo "SusFS Version: $susfs_version"
           
           case "$susfs_version" in
-            "v1.5.5"|"v1.5.6"|"v1.5.7")
-              cp "../../../kernel_patches/next/0001-kernel-implement-susfs-v1.5.5-v1.5.7-KSUN-v1.0.8.patch" "./ksun_susfs_latest.patch"
-              ;;
-            "v1.5.8"|"v1.5.9")
+            "v1.5.9")
               cp ../../../susfs4ksu/kernel_patches/KernelSU/10_enable_susfs_for_ksu.patch ./
               patch -p1 --forward --fuzz=3 < 10_enable_susfs_for_ksu.patch || true
               cp "../../../kernel_patches/next/susfs_fix_patches/$susfs_version/fix_apk_sign.c.patch" ./
@@ -140,6 +137,10 @@ jobs:
               patch -p1 --forward --fuzz=3 < fix_selinux.c.patch
               cp "../../../kernel_patches/next/susfs_fix_patches/$susfs_version/fix_ksud.c.patch" ./
               patch -p1 --forward --fuzz=3 < fix_ksud.c.patch
+              cp "../../../kernel_patches/next/susfs_fix_patches/$susfs_version/fix_rules.c.patch" ./
+              patch -p1 --forward --fuzz=3 < fix_rules.c.patch
+              cp "../../../kernel_patches/next/susfs_fix_patches/$susfs_version/fix_sucompat.c.patch" ./
+              patch -p1 --forward --fuzz=3 < fix_sucompat.c.patch
               ;;
             *)
               echo "Invalid version: $susfs_version"
@@ -151,6 +152,11 @@ jobs:
           
           # Change to common directory and apply SUSFS patch
           cd ../common
+
+          # SusFS Experimental Patches 
+          echo "Patching susfs_dentry_null_checks!"
+          patch -p1 -F 3 < "../../../kernel_patches/experimental/susfs/susfs_dentry_checks.patch"
+          
           if [ "${{ inputs.android_version }}" = "android15" ] && [ "${{ inputs.kernel_version }}" = "6.6" ]; then
               if ! grep -qxF '#include <trace/hooks/fs.h>' ./fs/namespace.c; then
                   sed -i '/#include <trace\/hooks\/blk.h>/a #include <trace\/hooks\/fs.h>' ./fs/namespace.c
